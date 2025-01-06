@@ -1,7 +1,7 @@
 <h2>Reactivos: <small> Dinámicos </small></h2>
 <hr />
 
-<form autocomplete="off" [formGroup]="myForm">
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <!-- Nombre -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Nombre</label>
@@ -68,6 +68,10 @@
         }
       </div>
 
+      } @if ( formUtils.isValidField(myForm, 'favoriteGames')) {
+      <span class="form-text text-danger">
+        Debe de tener al menos 2 juegos.
+      </span>
       }
     </div>
   </div>
@@ -91,5 +95,5 @@
 <br />
 
 <span>Agregar Juego</span>
-<!-- <pre>{{ myForm | json }}</pre>
-<pre>{{ myForm | json }}</pre> -->
+<pre>{{ myForm.controls["favoriteGames"].errors | json }}</pre>
+<pre>{{ myForm.controls["favoriteGames"].value | json }}</pre>
