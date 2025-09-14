@@ -3,7 +3,7 @@ import { CountryPageComponent } from './pages/country-page/country-page.componen
 
 export const countryRoutes: Routes = [
   {
-    path: '',
+    path: '', // Esto significa que la ruta la va a dar el sistema de ruta padre.
     component: CountryPageComponent,
   },
 ];

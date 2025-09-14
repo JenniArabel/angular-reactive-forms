@@ -9,20 +9,20 @@ export const reactiveRoutes: Routes = [
     children: [
       {
         path: 'basic',
-        title: 'Básicos',
+        title: 'Básicos', // Opcional: Define el título de la página.
         component: BasicPageComponent,
       },
       {
         path: 'dynamic',
-        title: 'Dinámicos',
+        title: 'Dinámicos', // Opcional: Define el título de la página.
         component: DynamicPageComponent,
       },
       {
         path: 'switches',
-        title: 'Switches',
+        title: 'Switches', // Opcional: Define el título de la página.
         component: SwitchesPageComponent,
       },
-      {
+      { // Path comodín, para redirigir a una ruta por defecto.
         path: '**',
         redirectTo: 'basic',
       },
