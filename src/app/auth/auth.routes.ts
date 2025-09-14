@@ -17,4 +17,4 @@ export const authRoutes: Routes = [
   },
 ];
 
-export default authRoutes;
+export default authRoutes; // Exportación por defecto (opcional)
