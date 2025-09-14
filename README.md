@@ -12,48 +12,22 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Estructura de directorios
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Auth
+Se encarga de la parte de la validación, todavia no vamos a tener un backend.
+La idea es manejar un Sign In completo: con usuario y contraseña que manejaremos con los formularios.
 
-```bash
-ng generate component component-name
-```
+### Country 
+Ejercicio de formularios dinámicos anidados
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Reactive
+Ejercicios básicos de formularios reactivos
 
-```bash
-ng generate --help
-```
+### Shared
+Módulo compartido entre diferentes módulos
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Utils
+Utilitarios porque los formularios reactivos reutilizan mucho código y la idea es
+crear una clase que nos sirva para copiar y pegar en otras aplicaciones y que tengamos ya la lógica
+de formulario hecha.
