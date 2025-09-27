@@ -3,8 +3,8 @@
 
 <div class="row">
   <div class="col">
-    <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
-      <!-- Campo de producto -->
+    <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()"> <!-- [formGroup]="myForm" sirve para asociarlo con el formulario reactivo  -->
+      <!-- Campo de producto: tipo string -->
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Producto</label>
         <div class="col-sm-9">
@@ -14,6 +14,8 @@
             placeholder="Nombre del producto"
             formControlName="name"
           />
+          <!-- formControlName sirve para asociarlo con el formulario reactivo,
+           sino no podría detectar cambios en el formulario -->
 
           @if ( formUtils.isValidField( myForm, 'name') ) {
           <span class="form-text text-danger">
@@ -23,7 +25,7 @@
         </div>
       </div>
 
-      <!-- Campo de producto -->
+      <!-- Campo de precio: tipo number -->
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Precio</label>
         <div class="col-sm-9">
@@ -41,7 +43,7 @@
         </div>
       </div>
 
-      <!-- Campo de existencias -->
+      <!-- Campo de existencias: tipo number -->
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Existencias</label>
         <div class="col-sm-9">
@@ -60,6 +62,7 @@
         </div>
       </div>
 
+      <!-- Boton de guardar -->
       <div class="row">
         <div class="col">
           <button type="submit" class="btn btn-primary float-end">
@@ -75,15 +78,23 @@
   <div class="col">
     <span>Valid</span>
     <pre>{{ myForm.valid | json }}</pre> <!-- Pipe para mostrar JSON -->
+    <!-- true porque no tenemos ninguna validación -->
 
     <span>Pristine</span>
     <pre>{{ myForm.pristine | json }}</pre>
+    <!-- true porque no hemos modificado nada del formulario
+     desde el momento en que se le dió al usuario
+    -->
 
     <span>Touched</span>
     <pre>{{ myForm.touched | json }}</pre>
+    <!-- false cuando el usuario no ha tocado el formulario -->
 
     <span>Value</span>
     <pre>{{ myForm.value | json }}</pre>
+    <!-- Muestra el valor del formulario en formato JSON,
+     se muestra tal cual fue definido en el componente typescript
+    -->
 
     <span>Errores en name</span>
     <pre>{{ myForm.controls["name"].errors | json }}</pre>
@@ -92,8 +103,23 @@
 
     <span>Precio</span>
     <pre>{{ myForm.controls["price"].value | json }}</pre>
+    <!-- price computado como está
+     o se puede hacer también como: myForm.controls.price
+
+     Si no colocamos al final .value, nos muestra un error "Circular"
+     porque el objeto FormControl tiene referencias circulares
+     que el pipe json no puede resolver.
+     Price es el control y el value es el valor de ese control.
+
+     Al principio se muestra como un número 0 porque
+     así fue definido en el componente typescript
+     -->
 
     <span>Producto</span>
     <pre>{{ myForm.controls["name"].value | json }}</pre>
+    <!-- Lo mismo que arriba, pero con name
+    Al principio se muestra como un string vacío "" porque
+    así fue definido en el componente typescript
+    -->
   </div>
 </div>
