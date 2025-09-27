@@ -6,6 +6,7 @@ interface MenuItem {
   title: string;
   route: string;
 }
+// Define la estructura que debe tener cada elemento del menú.
 
 const reactiveItems = reactiveRoutes[0].children ?? [];
 // reactiveItems es un array de rutas hijas, si no hay rutas hijas, será un array vacío.
@@ -24,6 +25,7 @@ export class SideMenuComponent {
       title: `${item.title}`,
     }));
   /** ReactiveMenu
+   * Es un menú dinámico.
    * Está transformando rutas de Angular
    * en elementos de menú
    * para mostrarlos en la navegación lateral de la aplicación.
@@ -41,6 +43,13 @@ export class SideMenuComponent {
       route: './auth',
     },
   ];
+  /** AuthMenu
+   * Menú harcodeado igual que countryMenu
+   * Contiene los elementos de menú para la sección de autenticación.
+   * title: El título que se mostrará en el menú (en este caso, 'Registro').
+   * route: La ruta a la que se navegará cuando se seleccione este elemento del menú (en este caso, './auth').
+   * 1 sóla opción en el menú. Pero si hubiera más, se añadirían como objetos adicionales en el array.
+   */
 
   countryMenu: MenuItem[] = [
     {
