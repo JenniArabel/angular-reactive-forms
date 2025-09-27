@@ -1,5 +1,5 @@
 <h2>Páginas</h2>
-<hr />
+ <hr /> <!-- Salto de línea -->
 
 <h3 class="mt-3">Reactive</h3>
 
@@ -12,7 +12,20 @@
   >
     {{ item.title }}
   </li>
+  <!-- Explicación:
+  - item of reactiveMenu: itera sobre cada elemento del array reactiveMenu
+  - track item.title: especifica qué propiedad usar (title) para rastrear cada elemento (optimización de rendimiento)
+  - [routerLink]="item.route": property binding que hace el elemento clickeable para navegar a la ruta especificada en item.route
+  - routerLinkActive="active": añade automáticamente la clase CSS active cuando la ruta actual coincide con item.route
 
+  Este código genera dinámicamente una lista de navegación donde cada elemento:
+  - Se renderiza a partir de un array llamado reactiveMenu
+  - Es clickeable y navega a una ruta específica
+  - Se resalta automáticamente cuando está activo
+  - Muestra el título correspondiente
+
+   {{ item.title }} utiliza interpolación para mostrar el título de cada elemento en la lista.
+  -->
   }
 </ul>
 
