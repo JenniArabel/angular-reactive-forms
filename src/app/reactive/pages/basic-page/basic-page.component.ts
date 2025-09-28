@@ -17,7 +17,7 @@ import { FormUtils } from '../../../utils/form-utils';
 })
 export class BasicPageComponent {
   private fb = inject(FormBuilder); //Inyeccion de FormBuilder (forma moderna de Forms Reactivos)
-  formUtils = FormUtils;
+  formUtils = FormUtils; // Para usar los métodos estáticos del form-utils.ts en el HTML
 
   // Formulario reactivo
   myForm: FormGroup = this.fb.group({
@@ -40,6 +40,7 @@ export class BasicPageComponent {
       inStorage: new FormControl(0),
     });
 
+    // Llevado al form-utils.ts
     isValidField(fieldName: string): boolean | null {
       return ( // Retorno de una condicion
         this.myForm.controls[fieldName].errors &&
@@ -47,6 +48,7 @@ export class BasicPageComponent {
       );
     }
 
+    // Llevado al form-utils.ts
     getFieldError(fieldName: string): string | null { // Retorno de un string o null
       if (!this.myForm.controls[fieldName]) return null;
 

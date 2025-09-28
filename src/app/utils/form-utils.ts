@@ -1,7 +1,13 @@
 import { FormArray, FormGroup, ValidationErrors } from '@angular/forms';
+/**  ARCHIVO UTILITARIO DE FORMULARIOS REACTIVOS reutilizable
+ Sirve para validar campos y obtener mensajes de error
+ Se puede usar en cualquier componente que use formularios reactivos
 
+ Contiene métodos estáticos (no es necesario instanciar la clase para usarlos)
+*/
 export class FormUtils {
   // Expresiones regulares
+
 
   static getTextError(errors: ValidationErrors) {
     for (const key of Object.keys(errors)) {
@@ -20,6 +26,7 @@ export class FormUtils {
     return null;
   }
 
+  // Método para validar si un campo es valido o no
   static isValidField(form: FormGroup, fieldName: string): boolean | null {
     return (
       !!form.controls[fieldName].errors && form.controls[fieldName].touched
@@ -40,10 +47,7 @@ export class FormUtils {
     );
   }
 
-  static getFieldErrorInArray(
-    formArray: FormArray,
-    index: number
-  ): string | null {
+  static getFieldErrorInArray(formArray: FormArray, index: number): string | null {
     if (formArray.controls.length === 0) return null;
 
     const errors = formArray.controls[index].errors ?? {};

@@ -60,6 +60,9 @@
             formControlName="inStorage"
           />
 
+          <!-- Utilizacion de form-utils.ts
+          Sirve para validar campos y mostrar errores
+          -->
           @if ( formUtils.isValidField( myForm, 'inStorage') ) {
           <span class="form-text text-danger">
             {{ formUtils.getFieldError(myForm, "inStorage") }}
