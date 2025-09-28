@@ -3,7 +3,12 @@
 
 <div class="row">
   <div class="col">
-    <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()"> <!-- [formGroup]="myForm" sirve para asociarlo con el formulario reactivo  -->
+    <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
+      <!-- [formGroup]="myForm" sirve para asociarlo con el formulario reactivo
+      ngSubmit es un evento que se dispara cuando se envía el formulario,
+      previene el comportamiento o la propagacion por defecto del formulario
+      -->
+
       <!-- Campo de producto: tipo string -->
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Producto</label>
@@ -15,7 +20,8 @@
             formControlName="name"
           />
           <!-- formControlName sirve para asociarlo con el formulario reactivo,
-           sino no podría detectar cambios en el formulario -->
+           sino no podría detectar cambios en el formulario
+          -->
 
           @if ( formUtils.isValidField( myForm, 'name') ) {
           <span class="form-text text-danger">
@@ -77,7 +83,8 @@
 <div class="row">
   <div class="col">
     <span>Valid</span>
-    <pre>{{ myForm.valid | json }}</pre> <!-- Pipe para mostrar JSON -->
+    <pre>{{ myForm.valid | json }}</pre>
+    <!-- Pipe para mostrar JSON -->
     <!-- true porque no tenemos ninguna validación -->
 
     <span>Pristine</span>
@@ -96,8 +103,16 @@
      se muestra tal cual fue definido en el componente typescript
     -->
 
+
+    <!-- Mostrar errores específicos de cada campo
+    Angular maneja los errores de los input separados de los errores del formulario
+    por eso se accede a ellos de esta forma: los siguientes son errores del formulario.
+    Más específicamente, errores de cada control del formulario
+    (cada control es cada campo del formulario)
+    -->
     <span>Errores en name</span>
     <pre>{{ myForm.controls["name"].errors | json }}</pre>
+    <!-- ["name"] significa que está como una señal computada -->
     <pre>{{ myForm.controls["price"].errors | json }}</pre>
     <pre>{{ myForm.controls["inStorage"].errors | json }}</pre>
 
@@ -113,7 +128,7 @@
 
      Al principio se muestra como un número 0 porque
      así fue definido en el componente typescript
-     -->
+    -->
 
     <span>Producto</span>
     <pre>{{ myForm.controls["name"].value | json }}</pre>
